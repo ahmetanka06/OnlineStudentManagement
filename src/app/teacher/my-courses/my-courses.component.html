@@ -1,0 +1,121 @@
+<style>
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+</style>
+<div style="overflow-x:auto;">
+
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Course No</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Fees(₺)</th>
+        <th scope="col">Course Start Date</th>
+        <th scope="col">Course End Date</th>
+
+        <th scope="col">Detail</th>
+        <th scope="col">Content</th>
+        <th scope="col">Teacher UserName</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{courses.courseID}}</td>
+        <td>{{courses.courseName}}</td>
+        <td>{{courses.fees}}</td>
+        <td>{{courses.courseStart}}</td>
+        <td>{{courses.courseEnd}}</td>
+
+        <td>{{courses.courseDetail}}</td>
+        <td>{{courses.courseContent}}</td>
+        <td>{{courses.teacherName}}</td>
+        <td><button class="btn btn-info" type="submit" (click)="onClick()">Update</button>
+        <td><button class="btn btn-info" type="submit" (click)="onClickStudent()">Participants
+          </button>
+
+        </td>
+      </tr>
+
+    </tbody>
+
+
+  </table>
+</div>
+<div *ngIf="isBool" style="      width: 300px;
+position: absolute;
+
+left: 40%;
+
+
+margin-left: -40px;
+
+">
+  <a style="color: dodgerblue; font-size: 20px;">Students Taking The Course
+  </a>
+
+  <tr *ngFor="let s of studentDetail" style="border-bottom:1pt solid dodgerblue;">
+
+    <td><a style="font-weight: bold;">Student No:</a>{{s.studentId}}<br>
+      <a style="font-weight: bold;">Student Name:</a>{{s.studentName}}
+    </td>
+
+
+  </tr>
+  <tr>
+    <td> <button class="btn btn-info" type="submit" (click)="close()" style="vertical-align:auto;">Close</button>
+    </td>
+  </tr>
+
+</div>
+
+
+<form [formGroup]="form" class="form-register" *ngIf="isClick">
+  <a style="color: dodgerblue;">Name</a>
+  <div class="form-group">
+    <input type="text" id="userName" name="userName" [(ngModel)]="courses.courseName" formControlName="name"
+      class="form-control" placeholder="Name" autofocus>
+
+  </div>
+  <div class="form-group">
+    <a style="color: dodgerblue;">Fees(₺)</a>
+    <input type="text" id="fees" name="fees" [(ngModel)]="courses.fees" formControlName="fees" class="form-control"
+      placeholder="Fees">
+  </div>
+  <div class="form-group">
+    <a style="color: dodgerblue;">Course Start</a>
+    <input type="text" id="courseStart" name="courseStart" [(ngModel)]="courses.courseStart"
+      formControlName="courseStart" class="form-control" placeholder="courseStart">
+  </div>
+  <div class="form-group">
+    <a style="color: dodgerblue;">Course End</a>
+    <input type="text" id="courseEnd" name="courseEnd" [(ngModel)]="courses.courseEnd" formControlName="courseEnd"
+      class="form-control" placeholder="courseEnd">
+  </div>
+  <div class="form-group">
+    <a style="color: dodgerblue;">Detail</a>
+    <textarea type="text" id="detail" name="detail" [(ngModel)]="courses.courseDetail" formControlName="detail"
+      class="form-control" placeholder="Detail"></textarea>
+  </div>
+  <div class="form-group">
+    <a style="color: dodgerblue;">Content</a>
+    <textarea type="text" id="content" name="content" [(ngModel)]="courses.courseContent" formControlName="content"
+      class="form-control" placeholder="Content"></textarea>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" (click)="cancel()" type="submit">Close</button>
+
+  <button class="btn btn-lg btn-primary btn-block" (click)="submit()" type="submit">Save</button>
+</form>

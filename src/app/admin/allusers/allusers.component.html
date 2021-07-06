@@ -1,0 +1,44 @@
+<style>
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+</style>
+<div style="overflow-x:auto;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Registration order(Total={{this.users.length}})
+        </th>
+        <th scope="col">User ID</th>
+        <th scope="col">Username</th>
+        <th scope="col">User Role</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users;let index=index">
+        <td>{{index+1}}</td>
+        <td>{{user.id}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.roleString}}</td>
+
+      </tr>
+
+    </tbody>
+
+
+  </table>
+</div>

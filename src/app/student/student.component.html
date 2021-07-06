@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Kurs Kodu</th>
+      <th scope="col">Kurs Adı</th>
+      <th scope="col">Ücreti</th>
+      <th scope="col">Süresi</th>
+      <th scope="col" *ngIf="isClick">İçerik Ekle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{course.courseID}}</td>
+      <td>{{course.courseName}}</td>
+      <td>{{course.fees}}</td>
+      <td>{{course.duration}}</td>
+      <td><button class="btn btn-info" type="submit" (click)="onClick(course.courseID)" *ngIf="isClick">Ekle</button>
+      </td>
+    </tr>
+
+  </tbody>
+
+
+</table>
+
+<app-calendar></app-calendar>

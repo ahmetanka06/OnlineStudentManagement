@@ -1,0 +1,50 @@
+<style>
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+</style>
+<div style="overflow-x:auto;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Course No</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Fees(₺)</th>
+        <th scope="col">Course Start Date</th>
+        <th scope="col">Course End Date</th>
+        <th scope="col">Teacher UserName</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let course of courses">
+        <td>{{course.courseID}}</td>
+        <td>{{course.courseName}}</td>
+        <td>{{course.fees}}</td>
+        <td>{{course.courseStart}}</td>
+        <td>{{course.courseEnd}}</td>
+        <td>{{course.teacherName}}</td>
+        <td><button class="btn btn-info" *ngIf="isClick" type="submit" (click)="onClick(course.courseID)">Join</button>
+
+
+        </td>
+      </tr>
+
+    </tbody>
+
+
+  </table>
+</div>
+<app-calendar></app-calendar>

@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\dist",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\admin",
+    "\\src\\app\\admin\\allcourses",
+    "\\src\\app\\home",
+    "\\src\\app\\teacher"
+  ],
+  "SelectedNode": "\\src\\app\\calendar",
+  "PreviewInSolutionExplorer": false
+}

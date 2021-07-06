@@ -1,0 +1,17 @@
+<form [formGroup]="registerForm" class="form-register">
+  <h6 class="mt-5">Age</h6>
+  <div class="form-group">
+    <input type="text" id="age" name="age" [(ngModel)]="age" formControlName="age" class="form-control"
+      placeholder="Age">
+    <span class="help-block" *ngIf="registerForm.get('age').hasError('required') && registerForm.get('age').touched">
+      Name is required
+    </span>
+  </div>
+  <h6 class="mt-5">Education Detail</h6>
+  <div class="form-group">
+    <input type="text" id="education" name="education" [(ngModel)]="education" formControlName="education"
+      class="form-control" placeholder="Education Detail">
+
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" (click)="submit()" type="submit">Save</button>
+</form>

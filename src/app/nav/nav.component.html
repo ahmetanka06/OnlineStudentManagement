@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <div class="container-fluid">
+
+    <span
+      style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 1.5rem;">Online
+      Student
+      Management System</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="courses">Courses</a>
+        </li>
+
+
+        <li class="nav-item dropdown" *ngIf="authService.role==='0'||authService.role===0" routerLink="#">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="register">Add User</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="allcourses">All Courses</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="allusers">All Users</a>
+          </div>
+
+        </li>
+        <li class="nav-item dropdown" *ngIf=" authService.role==='2'||authService.role===2">
+          <a class="nav-link dropdown-toggle" href="student" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Student</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="studentcourse">My Courses</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="studentinfo">My Information</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown" *ngIf="authService.role==='1'||authService.role===1">
+          <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Teacher
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <a class="dropdown-item" routerLink="my-courses">My Courses</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="teacherinfo">My Information</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="addcourse">Add Course</a>
+          </div>
+
+
+        </li>
+      </ul>
+      <form *ngIf="!isAuthenticated" #loginForm="ngForm" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" required type="text" placeholder="User Name" name="userName"
+          [(ngModel)]="loginUser.userName">
+
+        <input class="form-control mr-sm-2" type="password" placeholder="Password" name="password"
+          [(ngModel)]="loginUser.password" required>
+
+        <button class="btn btn-info" [disabled]="!loginForm.valid" (click)="login()" type="submit">Login</button>
+      </form>
+      <a class="nav-link" *ngIf="isAuthenticated">{{authService.userName}}</a>
+      <button class="btn btn-info" *ngIf="isAuthenticated" (click)="logout()" type="submit">Logout</button>
+
+
+
+    </div>
+  </div>
+</nav>
