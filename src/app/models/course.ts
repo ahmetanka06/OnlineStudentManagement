@@ -7,5 +7,5 @@ export class Course {
   courseDetail: string;
   teacherName: string;
   courseStart: Date;
-  courseEnd: Date;
+  courseEnd: Date; // deneme
 }
